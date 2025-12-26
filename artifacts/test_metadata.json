@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MyToken.sol": "test"
+			"contracts/token.sol": "test"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -32,6 +32,14 @@
 		"remappings": []
 	},
 	"sources": {
+		"@openzeppelin/contracts/access/Ownable.sol": {
+			"keccak256": "0xff6d0bb2e285473e5311d9d3caacb525ae3538a80758c10649a4d61029b017bb",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8ed324d3920bb545059d66ab97d43e43ee85fd3bd52e03e401f020afb0b120f6",
+				"dweb:/ipfs/QmfEckWLmZkDDcoWrkEvMWhms66xwTLff9DDhegYpvHo1a"
+			]
+		},
 		"@openzeppelin/contracts/interfaces/draft-IERC6093.sol": {
 			"keccak256": "0x19fdfb0f3b89a230e7dbd1cf416f1a6b531a3ee5db4da483f946320fc74afc0e",
 			"license": "MIT",
@@ -144,12 +152,12 @@
 				"dweb:/ipfs/QmVUSvooZKEdEdap619tcJjTLcAuH6QBdZqAzWwnAXZAWJ"
 			]
 		},
-		"contracts/MyToken.sol": {
-			"keccak256": "0xc5cb61d9543cc71f3612fb10b951fdf9efc98864814fc64a76162b75ae4b7df2",
+		"contracts/token.sol": {
+			"keccak256": "0x973842d873e347c7e13e2d8633da53cdd3a334f649cfd3c65ae112dabd816926",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://1d35f352df54ee97bfe5fc468c01a219418047aa039698e9e38e17dbbc3dff89",
-				"dweb:/ipfs/QmV1B3W5GNqjZ9dXRrNytCji1xCabfA65VuKQ1qdrDDQsd"
+				"bzz-raw://64a5240c6de6a64cfaf59df89dcb6b7b637d3713a89622411cfc7f838a0e85f7",
+				"dweb:/ipfs/QmTqQyEhxcsTCv91SWVC2p62AMymnQ9q2SHR8A2RR3ebHP"
 			]
 		}
 	},
