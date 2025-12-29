@@ -7,7 +7,7 @@
 		"abi": [
 			{
 				"inputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
 			{
@@ -311,19 +311,6 @@
 			},
 			{
 				"inputs": [],
-				"name": "isMintEnabled",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "mint",
 				"outputs": [],
 				"stateMutability": "payable",
@@ -466,24 +453,6 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "allowed",
-						"type": "bool"
-					}
-				],
-				"name": "setUserPermission",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "bytes4",
 						"name": "interfaceId",
 						"type": "bytes4"
@@ -514,13 +483,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "toggleMintPermission",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "uint256",
@@ -534,6 +496,19 @@
 						"internalType": "string",
 						"name": "",
 						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalAmountRaised",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -728,7 +703,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MintContract.sol": "MintContract"
+			"contracts/MintContract.sol": "MintC"
 		},
 		"evmVersion": "shanghai",
 		"libraries": {},
@@ -863,11 +838,11 @@
 			]
 		},
 		"contracts/MintContract.sol": {
-			"keccak256": "0xec8a963f506e91c08bc665aed186b1a7b9bcb7ac8047f0989c0ec7c2c02d4508",
+			"keccak256": "0x06b346070b586edbcc72865eae6d60d72eac3c72bdff0cbe42315adad8ce9e01",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://0a85c3d1eb78e8da7babfbb05a6ca51f7205cd4aeb9f650b2ac3a2a6b72f8b69",
-				"dweb:/ipfs/Qmf5jMbNsgs6scZJ4S71B7kQ3W7Cya9ZHfHYAUmJjjkvwm"
+				"bzz-raw://55feb908cd2d5c85ebc289ee1cb20bb436cc3583e20f793d9d2d30a88528be8c",
+				"dweb:/ipfs/QmWWuyyxqGwRWsq91nL6Qar7zWngVy975ZHFgSTo25z8QP"
 			]
 		}
 	},
