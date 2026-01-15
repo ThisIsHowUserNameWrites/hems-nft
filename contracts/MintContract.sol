@@ -8,33 +8,39 @@ contract MintContract is ERC721, Ownable {
     // infinity token number 
     uint256 public mintPrice = 0.001 ether;
     uint256 private nextTokenId;
-    bool public isMintEnabled;
-
-    // user minting permission
-    mapping(address => bool) isAllowed;
+    
 
     constructor() payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
-        isMintEnabled = false;
+        
     }
     
-    function toggleMintPermission() external onlyOwner{
-        isMintEnabled = !isMintEnabled;
-    }
-
-    function setUserPermission(address user, bool allowed) external onlyOwner{
-        isAllowed[user] = allowed;
-    }
-
+    
+    //donation event
+    event Donation(
+        address indexed donor,
+        uint256 indexed token,
+        uint256 amount,
+        uint256 timestamp);
+        
+   
+    
     function mint() external payable {
-        require(isMintEnabled, "Minting not enabled");
-        require(isAllowed, "Minting denied");
+        
+        require(IPermission.isMintEnabled, "Minting not enabled");
+        require(IPermission.isAllowed[msg.sender], "No minting permission");
         require(msg.value >= mintPrice, "Please reach the minimum amount");
         uint256 tokenId = nextTokenId++;
         _safeMint(msg.sender, tokenId);
+
+        //register donate event
+        emit Donation(msg.sender, tokenId, msg.value, block.timestamp);
 
     }
 
 
 }
 
-
+interface IPermission {
+    function isMintEnabled() external view returns (bool);
+    function isAllowed(address user) external view returns (bool);
+}

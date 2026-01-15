@@ -9,17 +9,12 @@ contract Accounting is ERC721, Ownable{
     uint256 public totalTokenNumber;
     uint256 
 
-    event MintActivity(
-        address donor,
-        uint256 tokenId,
-        uint256 amount,
-        uint256 timestamp
-        
-    );
+    
 
     constructor() ERC721 Ownable(){}
-    
-    function record(){
 
-    }
+    
+   
+
+    
 }
