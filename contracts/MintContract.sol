@@ -13,7 +13,7 @@ contract MintContract is ERC721, Ownable {
     IAccounting public accounting;
 
     constructor() payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
-        
+       
     }
     
     
@@ -27,8 +27,8 @@ contract MintContract is ERC721, Ownable {
     
     function mint() external payable {
         
-        require(permission.isMintEnabled, "Minting not enabled");
-        require(permission.isAllowed[msg.sender], "No minting permission");
+        require(permission.isMintEnabled(), "Minting not enabled");
+        require(permission.isAllowed(msg.sender), "No minting permission");
         require(msg.value >= mintPrice, "Please reach the minimum amount");
         uint256 tokenId = nextTokenId++;
         _safeMint(msg.sender, tokenId);

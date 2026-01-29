@@ -261,6 +261,19 @@
 				"type": "event"
 			},
 			{
+				"inputs": [],
+				"name": "accounting",
+				"outputs": [
+					{
+						"internalType": "contract IAccounting",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
 				"inputs": [
 					{
 						"internalType": "address",
@@ -320,25 +333,6 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
-						"type": "address"
-					}
-				],
-				"name": "isAllowed",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "owner",
 						"type": "address"
 					},
@@ -349,19 +343,6 @@
 					}
 				],
 				"name": "isApprovedForAll",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "isMintEnabled",
 				"outputs": [
 					{
 						"internalType": "bool",
@@ -430,6 +411,19 @@
 				"outputs": [
 					{
 						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "permission",
+				"outputs": [
+					{
+						"internalType": "contract IPermission",
 						"name": "",
 						"type": "address"
 					}
@@ -888,11 +882,11 @@
 			]
 		},
 		"contracts/MintContract.sol": {
-			"keccak256": "0x672aada495500ce798d949aaf26f720917400d5cfe94ffef0efbe9215bf92fe1",
+			"keccak256": "0xd1352ae30fa37d4ba9bacc82495fc3fb4f5b73771cbb8e79df9acdfc4d03e172",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://c9d0fc83d5d08c6386fc8f536d9fac36b28a8c951b7555fd03bcb6b26f2a939b",
-				"dweb:/ipfs/QmUhaEFhPUfgJ8uTkPVTuVdpJbfmnkK9yHtgNnWpBNfkD4"
+				"bzz-raw://48f8a2fada57d5817fe7370d843f663ed06f2a21eea3222bd284071118c2ed13",
+				"dweb:/ipfs/QmWmL3JhCdSvfutj4UD6SsmSk35DMMzocG1cCkgBxZdSnD"
 			]
 		}
 	},
