@@ -4,11 +4,13 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+
 contract MintContract is ERC721, Ownable {
     // infinity token number 
     uint256 public mintPrice = 0.001 ether;
     uint256 private nextTokenId;
-    
+    IPermission public permission;
+    IAccounting public accounting;
 
     constructor() payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
         
@@ -22,12 +24,11 @@ contract MintContract is ERC721, Ownable {
         uint256 amount,
         uint256 timestamp);
         
-   
     
     function mint() external payable {
         
-        require(IPermission.isMintEnabled, "Minting not enabled");
-        require(IPermission.isAllowed[msg.sender], "No minting permission");
+        require(permission.isMintEnabled, "Minting not enabled");
+        require(permission.isAllowed[msg.sender], "No minting permission");
         require(msg.value >= mintPrice, "Please reach the minimum amount");
         uint256 tokenId = nextTokenId++;
         _safeMint(msg.sender, tokenId);
@@ -43,4 +44,8 @@ contract MintContract is ERC721, Ownable {
 interface IPermission {
     function isMintEnabled() external view returns (bool);
     function isAllowed(address user) external view returns (bool);
+}
+
+interface IAccounting {
+    function recordDonation(address donor, uint256 tokenId, uint256 amount, uint256 timestamp) external;
 }
