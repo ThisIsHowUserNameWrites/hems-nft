@@ -49,8 +49,9 @@
 		},
 		"gasEstimates": null,
 		"methodIdentifiers": {
-			"isAllowed(address)": "babcc539",
-			"isMintEnabled()": "346de50a"
+			"owner()": "8da5cb5b",
+			"renounceOwnership()": "715018a6",
+			"transferOwnership(address)": "f2fde38b"
 		}
 	},
 	"abi": [
@@ -58,16 +59,51 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "user",
+					"name": "owner",
 					"type": "address"
 				}
 			],
-			"name": "isAllowed",
+			"name": "OwnableInvalidOwner",
+			"type": "error"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "account",
+					"type": "address"
+				}
+			],
+			"name": "OwnableUnauthorizedAccount",
+			"type": "error"
+		},
+		{
+			"anonymous": false,
+			"inputs": [
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "previousOwner",
+					"type": "address"
+				},
+				{
+					"indexed": true,
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
+				}
+			],
+			"name": "OwnershipTransferred",
+			"type": "event"
+		},
+		{
+			"inputs": [],
+			"name": "owner",
 			"outputs": [
 				{
-					"internalType": "bool",
+					"internalType": "address",
 					"name": "",
-					"type": "bool"
+					"type": "address"
 				}
 			],
 			"stateMutability": "view",
@@ -75,15 +111,22 @@
 		},
 		{
 			"inputs": [],
-			"name": "isMintEnabled",
-			"outputs": [
+			"name": "renounceOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
 				{
-					"internalType": "bool",
-					"name": "",
-					"type": "bool"
+					"internalType": "address",
+					"name": "newOwner",
+					"type": "address"
 				}
 			],
-			"stateMutability": "view",
+			"name": "transferOwnership",
+			"outputs": [],
+			"stateMutability": "nonpayable",
 			"type": "function"
 		}
 	]

@@ -9,32 +9,28 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "user",
+						"name": "donor",
 						"type": "address"
-					}
-				],
-				"name": "isAllowed",
-				"outputs": [
+					},
 					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "isMintEnabled",
-				"outputs": [
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
 					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
 					}
 				],
-				"stateMutability": "view",
+				"name": "recordDonation",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			}
 		],
@@ -51,7 +47,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/MintContract.sol": "IPermission"
+			"contracts/MintContract.sol": "IAccounting"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
