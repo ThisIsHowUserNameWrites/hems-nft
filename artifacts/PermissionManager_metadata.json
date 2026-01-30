@@ -230,9 +230,6 @@
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
-				"promoteToAdmin(address)": {
-					"details": "Maintenant, n'importe quel Admin peut promouvoir quelqu'un,  pas seulement le \"Owner\" (propriétaire du contrat)."
-				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
 				},
@@ -281,11 +278,11 @@
 			]
 		},
 		"contracts/Permission.sol": {
-			"keccak256": "0x172a0891cb6f4ec3225936b67378a16ec3a3e5895d0c346d4c51b1ba63f36850",
+			"keccak256": "0x4d10435c235fa6b8e80959807519f542a23c2d866f19c8aac92a0cf8267b40a1",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://977f4790c7c12182e9ba5bdb8fc710bd6b2cff2695d05bcfa4efa1b944c345d1",
-				"dweb:/ipfs/QmYEzCRLGSFiEFo6UGSmKU2NKnBiciomSG6fvoCfUYWc5J"
+				"bzz-raw://229e34f02440f0190a56dede9b68c54e8b4183ca12e0f083e3df34a1e2e0de39",
+				"dweb:/ipfs/QmRc2U9X2VGZCp8aKBPVBoduQcfsBKhr11FuTXZdFmgJuY"
 			]
 		}
 	},
