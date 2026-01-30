@@ -8,12 +8,15 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 contract MintContract is ERC721, Ownable {
     // infinity token number 
     uint256 public mintPrice = 0.001 ether;
-    uint256 private nextTokenId;
+    uint256 private nextTokenId = 1;
     IPermission public permission;
     IAccounting public accounting;
 
-    constructor() payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
-       
+    constructor(address permissionAddress) payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
+       permission = IPermission(permissionAddress);
+       //accounting = IAccounting(accountingAddress);
+       require(permissionAddress != address(0), "Null address");
+       //require(accountingAddress != address(0), "Null address");
     }
     
     
@@ -23,19 +26,27 @@ contract MintContract is ERC721, Ownable {
         uint256 indexed token,
         uint256 amount,
         uint256 timestamp);
+
+    function setAccounting(address accountingAddress) external onlyOwner {
+        require(accountingAddress != address(0), "Null address");
+        accounting = IAccounting(accountingAddress);
         
+    }
     
-    function mint() external payable {
+    function mint() external payable returns (uint256 tokenId){
         
         require(permission.isMintEnabled(), "Minting not enabled");
         require(permission.isAllowed(msg.sender), "No minting permission");
         require(msg.value >= mintPrice, "Please reach the minimum amount");
-        uint256 tokenId = nextTokenId++;
+
+        tokenId = nextTokenId;
+        nextTokenId++;
         _safeMint(msg.sender, tokenId);
 
         //register donate event
         emit Donation(msg.sender, tokenId, msg.value, block.timestamp);
-
+        accounting.recordDonation(msg.sender, tokenId, msg.value, block.timestamp);
+        
     }
 
 

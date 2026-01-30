@@ -1,20 +1,34 @@
 // SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+contract MintAccounting {
+    uint256 public totalRaised;
+    uint256 public totalTokens;
 
-contract Accounting is ERC721, Ownable{
-    uint256 public totalAmountRaised;
-    uint256 public totalTokenNumber;
-    uint256 
+    address public mintContract;
+    address public owner;
 
-    
+    constructor() {
+        owner = msg.sender;
+    }
 
-    constructor() ERC721 Ownable(){}
+    modifier onlyOwner() {
+        require(msg.sender == owner, "Not owner");
+        _;
+    }
 
-    
-   
+    modifier onlyMintContract() {
+        require(msg.sender == mintContract, "Not authorized");
+        _;
+    }
 
-    
+    function setMintContract(address mintContractAddress) external onlyOwner {
+        require(mintContractAddress != address(0), "Null address");
+        mintContract = mintContractAddress;
+    }
+
+    function recordDonation(address donor, uint256 tokenId, uint256 amount, uint256 timestamp) external onlyMintContract{
+        totalRaised += amount;
+        totalTokens += 1;
+    }
 }

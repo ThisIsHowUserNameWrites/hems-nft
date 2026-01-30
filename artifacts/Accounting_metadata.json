@@ -6,7 +6,13 @@
 	"output": {
 		"abi": [
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "mintContract_",
+						"type": "address"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
 			},
@@ -38,6 +44,50 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "donor",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"name": "DonationRecorded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "mintContract",
+						"type": "address"
+					}
+				],
+				"name": "MintContractSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
 					},
@@ -52,38 +102,19 @@
 				"type": "event"
 			},
 			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "user",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "enum PermissionManager.Role",
-						"name": "role",
-						"type": "uint8"
-					}
-				],
-				"name": "RoleAssigned",
-				"type": "event"
-			},
-			{
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "user",
+						"name": "",
 						"type": "address"
 					}
 				],
-				"name": "isAdmin",
+				"name": "donatedAmountOf",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"internalType": "uint256",
 						"name": "",
-						"type": "bool"
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -92,17 +123,27 @@
 			{
 				"inputs": [
 					{
-						"internalType": "address",
+						"internalType": "uint256",
 						"name": "",
-						"type": "address"
+						"type": "uint256"
 					}
 				],
-				"name": "isAllowed",
+				"name": "donationOfToken",
 				"outputs": [
 					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
+						"internalType": "address",
+						"name": "donor",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -110,12 +151,31 @@
 			},
 			{
 				"inputs": [],
-				"name": "isMintEnabled",
+				"name": "mintContract",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"internalType": "address",
 						"name": "",
-						"type": "bool"
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "mintedCountOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -138,11 +198,26 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "user",
+						"name": "donor",
 						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
 					}
 				],
-				"name": "promoteToAdmin",
+				"name": "recordDonation",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -158,44 +233,63 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "mintContract_",
 						"type": "address"
 					}
 				],
-				"name": "roles",
-				"outputs": [
-					{
-						"internalType": "enum PermissionManager.Role",
-						"name": "",
-						"type": "uint8"
-					}
-				],
-				"stateMutability": "view",
+				"name": "setMintContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "user",
+						"name": "donor",
 						"type": "address"
-					},
-					{
-						"internalType": "bool",
-						"name": "allowed",
-						"type": "bool"
 					}
 				],
-				"name": "setUserPermission",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "statsOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "donated",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minted",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
 				"inputs": [],
-				"name": "toggleMintPermission",
-				"outputs": [],
-				"stateMutability": "nonpayable",
+				"name": "totalMinted",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "totalReceived",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -247,7 +341,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"contracts/Permission.sol": "PermissionManager"
+			"contracts/Accounting.sol": "Accounting"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -277,12 +371,12 @@
 				"dweb:/ipfs/Qmax9WHBnVsZP46ZxEMNRQpLQnrdE4dK8LehML1Py8FowF"
 			]
 		},
-		"contracts/Permission.sol": {
-			"keccak256": "0x4d10435c235fa6b8e80959807519f542a23c2d866f19c8aac92a0cf8267b40a1",
+		"contracts/Accounting.sol": {
+			"keccak256": "0xdd1f9fc294c176e988fd3aef0cef2ca296fa256a97875a2b097f59cbfd3fd9c1",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://229e34f02440f0190a56dede9b68c54e8b4183ca12e0f083e3df34a1e2e0de39",
-				"dweb:/ipfs/QmRc2U9X2VGZCp8aKBPVBoduQcfsBKhr11FuTXZdFmgJuY"
+				"bzz-raw://2c386fc1ba7085d9e14424e2f181b2bbe492161eb13e7541a615a7ef614b4fe8",
+				"dweb:/ipfs/QmdHTxb9rNwCorRYAL1BvAA3fXX5LqGEyPtW9kLxe7Qf8n"
 			]
 		}
 	},
