@@ -9,8 +9,10 @@ contract MintContract is ERC721, Ownable {
     // infinity token number 
     uint256 public mintPrice = 0.001 ether;
     uint256 private nextTokenId = 1;
+    string private constant imgUrl = "ipfs://bafkreiciqrajzhm2qo4qqkcoht5pywgz4n2zmrj4bocngb5b6p5azwrzze";
     IPermission public permission;
     IAccounting public accounting;
+
 
     constructor(address permissionAddress) payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
        permission = IPermission(permissionAddress);
@@ -26,10 +28,16 @@ contract MintContract is ERC721, Ownable {
         uint256 amount,
         uint256 timestamp);
 
+
     function setAccounting(address accountingAddress) external onlyOwner {
         require(accountingAddress != address(0), "Null address");
         accounting = IAccounting(accountingAddress);
         
+    }
+
+    function tokenURI(uint256 tokenId) public view override returns (string memory) {
+        _requireOwned(tokenId);
+        return imgUrl;
     }
     
     function mint() external payable returns (uint256 tokenId){

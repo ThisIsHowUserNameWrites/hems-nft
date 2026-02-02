@@ -186,11 +186,11 @@
 			]
 		},
 		"contracts/MintContract.sol": {
-			"keccak256": "0x95c821d54dc9dcc9def9516288453938067d8f3b74e6e01f509fe125e915aa3b",
+			"keccak256": "0x1c0290386b7b898c20147014c1412061624b223b51cab0af9f159cf3d4e1c940",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://935385c96513f183d92c6851bb2e526535dabd93668524e534da0e25d1902d37",
-				"dweb:/ipfs/QmcxGdXndpHt1xjytgwDmmyGTV1LH4rm8nkpjCS3rYvaqu"
+				"bzz-raw://ea80991c7853f07ae1f4772e2e04d1779327225178e68c94a2cbdde22dc84701",
+				"dweb:/ipfs/QmSBsa2ma3864NP9uMzK8ToLtZdKrLEniMiiFv7om1FDo9"
 			]
 		}
 	},
