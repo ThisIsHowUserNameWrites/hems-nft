@@ -14,9 +14,8 @@ contract MintContract is ERC721, Ownable {
 
     constructor(address permissionAddress) payable ERC721("HEMS Donation NFT", "HEMS")Ownable(msg.sender){
        permission = IPermission(permissionAddress);
-       //accounting = IAccounting(accountingAddress);
        require(permissionAddress != address(0), "Null address");
-       //require(accountingAddress != address(0), "Null address");
+       
     }
     
     
