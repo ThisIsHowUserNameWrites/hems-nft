@@ -9,7 +9,7 @@ contract MintContract is ERC721, Ownable {
     // infinity token number 
     uint256 public mintPrice = 0.001 ether;
     uint256 private nextTokenId = 1;
-    string private constant imgUrl = "ipfs://bafkreiciqrajzhm2qo4qqkcoht5pywgz4n2zmrj4bocngb5b6p5azwrzze";
+    string private constant dataURI = "ipfs://bafkreiciqrajzhm2qo4qqkcoht5pywgz4n2zmrj4bocngb5b6p5azwrzze";
     IPermission public permission;
     IAccounting public accounting;
 
@@ -37,7 +37,7 @@ contract MintContract is ERC721, Ownable {
 
     function tokenURI(uint256 tokenId) public view override returns (string memory) {
         _requireOwned(tokenId);
-        return imgUrl;
+        return dataURI;
     }
     
     function mint() external payable returns (uint256 tokenId){
